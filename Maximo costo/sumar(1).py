@@ -11,6 +11,7 @@ datasheet = pd.read_csv("matriz.csv",sep=';',header=None) #Leemos los valores
 print(datasheet)
 matriz = datasheet.to_numpy().tolist() #Convertimos el dataframe a una matriz de python
 
+print(matriz)
 valores_seleccionados = [0 for i in range(len(matriz[0]))] #Creamos el vector de resultados inicializado en cero
 
 # Declaramos variables
@@ -27,6 +28,7 @@ while volumSum < restriccion:
         if volumSum < restriccion: 
                 valores_seleccionados[i] = 1
         i += 1 
+        print(volumSum)
 matriz.append(valores_seleccionados) 
       
 print(matriz[0])

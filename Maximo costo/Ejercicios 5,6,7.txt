@@ -1,0 +1,13 @@
+5. generar una respuesta
+generar un random que vaya entre la cantidad de datos
+cambiar 1 por 0 ty viceversas
+1 suma - 0 resta 
+
+6. es la combinacion de ejericicos del 1 al 4
+
+7. calculamos un indice 
+ordenamos
+normalizamos - dividir todos los valores entre el numero mas alto
+generar um aleatorio 
+sumar
+
