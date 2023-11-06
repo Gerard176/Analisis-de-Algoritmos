@@ -21,7 +21,7 @@ v = vol
 if v > 26:
     v = 0
 print(vol)
-while rep < 40:
+while rep < 60:
     
     r = random.randint(0, 9)
     # while rguard == r:

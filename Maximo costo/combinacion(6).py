@@ -53,7 +53,7 @@ if v > 26:
     v = 0
 print(ultimoVol)
 print(valores_seleccionados)
-while rep < 40:
+while rep < 1000:
     
     r = random.randint(0, 9)
     # while rguard == r:

@@ -1,0 +1,10 @@
+prohibe los numeros aleatorios
+memeoria de soluciones
+
+se tra una solucion y se comienza a mejorar como en el algoritmo 5
+se utiliiza la prohibicion es cuando se utiliza una opcion no se puede utilizar por dos opciones mas
+se hace una lista tabu   
+costo y volumen agregarlos a la matriz
+cuandola solucion no mejora de utiliza la opcion de aspiracion  que es una condicion
+
+en un intervalor de repeticiones n

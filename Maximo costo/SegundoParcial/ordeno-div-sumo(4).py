@@ -6,7 +6,7 @@ import pandas as pd
 # ordeno-div-sumo
 
 # Recoleccion de datos
-datasheet = pd.read_csv("matriz.csv",sep=';',header=None)
+datasheet = pd.read_csv("data.csv",header=None)
 print(datasheet)
 matriz = datasheet.to_numpy().tolist()
 print(matriz)
@@ -16,7 +16,7 @@ relacion = []
 indice = []
 #Creamos los indices de relacion y de la matriz original
 for i in range(rango):
-    relacion.append(matriz[0][i] / matriz[1][i])
+    relacion.append(round(matriz[0][i] / matriz[1][i],2))
     indice.append(i)
 #los incluimos en la matriz    
 matriz.append(relacion)
@@ -58,8 +58,8 @@ for indice, numero in enumerate(matriz[0]):
         ListaAuxiliarCosto.append(matriz_ordenada[1][indice]) 
         ListaAuxiliarVolumen.append(matriz_ordenada[2][indice])
         ListaIndicesRelacion.append(matriz_ordenada[3][indice])
-        print(ListaAuxiliarCosto)
-        print(n)
+        # print(ListaAuxiliarCosto)
+        # print(n)
         #Si estamos en la ultima posicion de la primera matriz
     if indice == n-1:
         #Guardamos los arrays en una nueva matriz
@@ -77,14 +77,14 @@ for indice, numero in enumerate(matriz[0]):
         while j != a:
             n = n+1
             j = j+1
-            print(n, j, a)
+            # print(n, j, a)
 
         # print(n)
-print(matrizAuxiliar)
+print("matriz auxiliar",matrizAuxiliar)
 
 
 valores_seleccionados = [0 for i in range(len(matriz[0]))]    
-restriccion = 26
+restriccion = 999
 costoSum = 0
 volumSum = 0
 i = 0
@@ -96,13 +96,13 @@ for j in range(numero_divisiones):
     if i == a:
         i = 0 
     #Realizamos la suma acumulativa   
-    while volumSum < restriccion and i != a: # si estamos en una posicion diferente al largo de cada matriz entonces entrara
+    while volumSum <= restriccion and i != a: # si estamos en una posicion diferente al largo de cada matriz entonces entrara
             resultado = "Costo: " + str(costoSum) +" Volumen: " +str(volumSum)  
             costoSum  += matrizAuxiliar[c+1][i]
             volumSum += matrizAuxiliar[c+2][i]
             # print(costoSum)
             print(volumSum)
-            if volumSum < restriccion:
+            if volumSum <= restriccion:
                 valores_seleccionados[r] = 1
             print(valores_seleccionados)    
             r += 1
@@ -146,7 +146,7 @@ for i in valores_ordenados:
      print(i)
 #Reemplazamos los valores de la matriz anterior por los nuevos
 
-for j in range(rango): 
+for j in range(len(ListasUnidas[0])): 
         matriz_ordenada[0][j] = valores_ordenados[j][0]
         matriz_ordenada[1][j] = valores_ordenados[j][1]
         matriz_ordenada[2][j] = valores_ordenados[j][2]
@@ -155,5 +155,4 @@ for j in range(rango):
         
 # mostramos el resultado
 print("Display horizontal: indice original|costo|volumen|indice relacion|productos seleccionados")
-print(matriz_ordenada)
 print(resultado)
