@@ -72,6 +72,7 @@ while vecindad < cantidad_vecindades:
 
 print(vecindades)
 
+#Instanciamos variables
 capacidad_memoria = 3
 rep_vecindades = 0
 rep_mejora = 0
@@ -79,6 +80,7 @@ mejor_vol = 0
 mejor_cos = 0
 mejor_resultado = [0 for i in range(len(matriz[0]))]
 memoria = []
+#Creamos el bucle que mirara en vecindades aleatorias segun la memoria
 while rep_vecindades < 300:
     print("Nueva vecindad")
     #Creamos la memoria
@@ -87,27 +89,28 @@ while rep_vecindades < 300:
     print(matriz[1])
     print(vecindades[r])
     # print("Random: ",r)
-    if len(memoria) < capacidad_memoria and r not in memoria:
+
+    if len(memoria) < capacidad_memoria and r not in memoria: #Miramos que la capacidad de la memoria no este llena y que el numero que vamos a agregar no este repetido
         memoria.append(r) 
-    elif r in memoria:
+    elif r in memoria: # Si el numero esta repetido entonces
         # print("El numero se repite dentro de la memoria: ", r)  
-        r2 = random.randint(0, 9)
+        r2 = random.randint(0, 9) #Se crea un nuevo aleatorio
         print("Nuevo numero: ",r2)
-        while r2 in memoria:
+        while r2 in memoria: #Se mira que este nuevo aleatorio no este repetido otra vez
             # print("Vuelve a estar dentro de la memoria: ",r2)
-            r2 = random.randint(0, 9)   
+            r2 = random.randint(0, 9) # Si se repite otra vez, se genera un nuevo aleatorio   
             
         # print("numero resultante: ",r2)    
-        r = r2
-        if len(memoria) < capacidad_memoria:
-            memoria.append(r)
-        else:
-            memoria.pop(0)
-            memoria.append(r)    
-    else:
-        memoria.pop(0)
-        memoria.append(r)    
-    #proceso
+        r = r2 #Se reemplaza el antiguo por el nuevo
+        if len(memoria) < capacidad_memoria: # Se mira que la capacidad de la memoria no este llena
+            memoria.append(r) # Se agrega el numero 
+        else: #Si esta llena la memoria  
+            memoria.pop(0) #borra el primer numero 
+            memoria.append(r)# y agrega el nuevo    
+    else: # Si esta llena la memoria 
+        memoria.pop(0) #Se borra el primer numero
+        memoria.append(r) #y se agrega el nuevo    
+    
     print("random: ",r)
     print(memoria,"Iteracion: ", rep_vecindades)
 
@@ -116,9 +119,9 @@ while rep_vecindades < 300:
     volumSum = 0
     i = 0
     while volumSum < restriccion and i < len(vecindades[0]):
-         
+        #miramos los valores de la vecindad
         if vecindades[r][i] == 1:
-                
+            #Hacemos la suma    
             costoSum  += matriz[0][i] 
             volumSum += matriz[1][i]
             resultado = "Costo: " + str(costoSum) +" Volumen: " +str(volumSum)
@@ -136,9 +139,11 @@ while rep_vecindades < 300:
 
     valores_resultado = [0 for i in range(len(matriz[0]))]  
     rep_mejora = 0
+    #Igualamos los valores obtenidos de la suma a los valores que se usan en la mejora
     vol = volumSum 
     cos = costoSum 
     v = vol
+    # si los valores actuales son mejores que los mejores entonces se guardan
     if cos > mejor_cos and vol >= mejor_vol and vol<= restriccion:
                     print("Costo maximo: ",cos)
                     print("Volumen maximo: ",vol)
@@ -148,7 +153,7 @@ while rep_vecindades < 300:
                         mejor_resultado[i] = valores_seleccionados[i]
     if v > restriccion:
         v = 0
- 
+    # se realiza la mejora 
     while rep_mejora < 500:
         
         r_mejora = random.randint(0, len(matriz[0])-1)
@@ -180,7 +185,7 @@ while rep_vecindades < 300:
                 valores_resultado[i] = valores_seleccionados[i]
             v = vol
             print("mejoro:", vol)    
-        if cos > mejor_cos and vol >= mejor_vol and vol<= restriccion:
+        if cos > mejor_cos and vol >= mejor_vol and vol<= restriccion: # Si la mejora resulta en un mejor valor entonces se guarda la solucion
                     print("Costo maximo: ",cos)
                     print("Volumen maximo: ",vol)
                     mejor_cos = cos
@@ -190,10 +195,10 @@ while rep_vecindades < 300:
             
             
 
-        rep_mejora = rep_mejora + 1
+        rep_mejora = rep_mejora + 1 #Aumentamos el contador de iteraciones de mejora
 
 
-    rep_vecindades = rep_vecindades + 1    
+    rep_vecindades = rep_vecindades + 1 #Aumentamos el contador de Aspiracion    
 print(mejor_cos, mejor_vol)
 
 
@@ -202,15 +207,6 @@ print(mejor_cos, mejor_vol)
 
 #Realizamos la suma
 # for x in range(len(vecindades)):
-    
-    
-    
-
-
-
-
-     
-
 
     #MEJORADO DE VALORES POR MEJORADO DE SOULUCIONES Y COMPARACION DE VALORES------------------
         # if vol <= restriccion:
